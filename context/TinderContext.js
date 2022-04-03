@@ -33,10 +33,10 @@ export const TinderProvider = ({ children }) => {
     if (!isAuthenticated) {
       try {
         await authenticate({
-          signingMessage: "Login using Moralis!",
+          signingMessage: "Log in using Moralis",
         });
-      } catch (err) {
-        console.error(err);
+      } catch (error) {
+        console.error(error);
       }
     }
   };
@@ -91,31 +91,6 @@ export const TinderProvider = ({ children }) => {
     } catch (err) {}
   };
 
-  const requestUsersData = async (activeAccount) => {
-    try {
-      const response = await fetch(
-        `/api/fetchUsers?activeAccount=${activeAccount}`
-      );
-      const data = await response.json();
-
-      setCardsData(data.data);
-    } catch (err) {}
-  };
-
-  const requestCurrentUserData = async (walletAddress) => {
-    try {
-      const response = await fetch(
-        `/api/fetchCurrentUserData?activeAddress=${walletAddress}`
-      );
-
-      const data = await response.json();
-
-      setCurrentUser(data, data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   const requestToCreateUserProfile = async (walletAddress, name) => {
     try {
       await fetch(`/api/createUser`, {
@@ -128,8 +103,34 @@ export const TinderProvider = ({ children }) => {
           name: name,
         }),
       });
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const requestCurrentUserData = async (walletAddress) => {
+    try {
+      const response = await fetch(
+        `/api/fetchCurrentUserData?activeAccount=${walletAddress}`
+      );
+      const data = await response.json();
+
+      setCurrentUser(data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const requestUsersData = async (activeAccount) => {
+    try {
+      const response = await fetch(
+        `/api/fetchUsers?activeAccount=${activeAccount}`
+      );
+      const data = await response.json();
+
+      setCardsData(data.data);
+    } catch (error) {
+      console.error(error);
     }
   };
 
