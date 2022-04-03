@@ -10,16 +10,12 @@ contract TinderERC721 is ERC721URIStorage {
 
     constructor() ERC721("CleverNFT", "CN") {}
 
-    function mintNFT(
-        address _userOne,
-        address _userTwo,
-        string memory tokenURI
-    ) public {
+    function mintNFT(address _userOne, address _userTwo, string memory tokenURI) public {
         _mint(_userOne, TINDER_TOKEN_ID);
         _setTokenURI(TINDER_TOKEN_ID, tokenURI);
-        TINDER_TOKEN_ID++;
+         TINDER_TOKEN_ID++;
 
-        _mint(_userTwo, TINDER_TOKEN_ID);
+        _mint(_userTwo,TINDER_TOKEN_ID);
         _setTokenURI(TINDER_TOKEN_ID, tokenURI);
         TINDER_TOKEN_ID++;
     }
