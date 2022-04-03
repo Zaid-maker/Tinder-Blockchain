@@ -24,11 +24,13 @@ const style = {
 
 const TinderCardItem = ({ card }) => {
   const { handleRightSwipe, currentAccount } = useContext(TinderContext);
+
   const onSwipe = (dir) => {
     if (dir === "right") {
       handleRightSwipe(card, currentAccount);
     }
   };
+
   return (
     <TinderCard
       className={style.tinderCardWrapper}
@@ -37,9 +39,7 @@ const TinderCardItem = ({ card }) => {
     >
       <div
         className={style.wrapper}
-        style={{
-          backgroundImage: `url(${card.imageUrl})`,
-        }}
+        style={{ backgroundImage: `url('${card.imageUrl}')` }}
       >
         <div className={style.space}>
           <div className={style.name}>

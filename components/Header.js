@@ -16,8 +16,9 @@ const style = {
 };
 
 const Header = () => {
-  const { connectWallet, disconnectWallet, currentAccount } =
+  const { connectWallet, currentAccount, disconnectWallet } =
     useContext(TinderContext);
+
   return (
     <div
       className={`${style.wrapper} ${
@@ -25,8 +26,8 @@ const Header = () => {
       }`}
     >
       <div className={style.main}>
-        <Image src={fire} width={45} height={45} alt="Tinder" />
-        <h1 className={style.tinderText}>Tinder</h1>
+        <Image src={fire} alt="fire" height={45} width={45} />
+        <h1 className={style.tinderText}>tinder</h1>
 
         <div className={style.leftMenu}>
           <div className={style.menuItem}>Products</div>
@@ -35,41 +36,36 @@ const Header = () => {
           <div className={style.menuItem}>Support</div>
           <div className={style.menuItem}>Download</div>
         </div>
-
-        <div className={style.rightMenu}>
-          <div>ENGLISH</div>
-
-          {currentAccount ? (
-            <>
-              <div className={style.currentAccount}>
-                <Image
-                  src={
-                    "https://moralis.io/wp-content/uploads/2021/05/moralisWhiteLogo.svg"
-                  }
-                  alt="moralis"
-                  height={20}
-                  width={20}
-                />
-                <span className={style.accountAddress}>
-                  {currentAccount.slice(0, 6)}...{currentAccount.slice(39)}
-                </span>
-              </div>
-              <button
-                className={style.authButton}
-                onClick={() => disconnectWallet()}
-              >
-                Logout
-              </button>
-            </>
-          ) : (
+      </div>
+      <div className={style.rightMenu}>
+        <div>ENGLISH</div>
+        {currentAccount ? (
+          <>
+            <div className={style.currentAccount}>
+              <Image
+                src={
+                  "https://moralis.io/wp-content/uploads/2021/05/moralisWhiteLogo.svg"
+                }
+                alt="moralis"
+                height={20}
+                width={20}
+              />
+              <span className={style.accountAddress}>
+                {currentAccount.slice(0, 6)}...{currentAccount.slice(39)}
+              </span>
+            </div>
             <button
               className={style.authButton}
-              onClick={() => connectWallet()}
+              onClick={() => disconnectWallet()}
             >
-              Login
+              Logout
             </button>
-          )}
-        </div>
+          </>
+        ) : (
+          <button className={style.authButton} onClick={() => connectWallet()}>
+            Login
+          </button>
+        )}
       </div>
     </div>
   );

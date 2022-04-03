@@ -15,10 +15,12 @@ const style = {
 };
 
 const CardHeader = () => {
+  const { currentUser } = useContext(TinderContext);
+
   return (
     <div className={style.wrapper}>
       <Image
-        src={profilePic}
+        src={currentUser?.imageUrl || profilePic}
         width={40}
         height={40}
         alt="profile-pic"
@@ -33,7 +35,7 @@ const CardHeader = () => {
       />
       <div className="flex items-center">
         <IoIosNotifications className={style.notificationIcon} />
-        <div className={style.notifications}></div>
+        <div className={style.notifications} />
       </div>
     </div>
   );

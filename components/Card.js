@@ -24,7 +24,7 @@ const Card = () => {
         <div className={style.noMoreWrapper}>
           <SiTinder className={style.tinderLogo} />
           <div className={style.noMoreText}>
-            No more Profiles in your location.
+            No More Profiles in your Location...
           </div>
         </div>
         <div className={style.swipesContainer}>

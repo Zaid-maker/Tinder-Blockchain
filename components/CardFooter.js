@@ -15,9 +15,9 @@ const CardFooter = () => {
     <div className={style.wrapper}>
       <Image
         src={fire}
-        width={35}
         height={35}
-        alt="fire"
+        width={35}
+        alt="fire-logo"
         className={style.logo}
       />
       <FaSearch className={style.icon} />
