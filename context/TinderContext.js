@@ -46,9 +46,9 @@ export const TinderProvider = ({ children }) => {
     setCurrentAccount("");
   };
 
-  const handleRightSwipe = async (cardsData, currentUserAddress) => {
+  const handleRightSwipe = async (cardData, currentUserAddress) => {
     const likeData = {
-      likedUser: cardsData.walletAddress,
+      likedUser: cardData.walletAddress,
       currentUser: currentUserAddress,
     };
 
@@ -70,14 +70,15 @@ export const TinderProvider = ({ children }) => {
       });
 
       const responseData = await response.json();
-      const matchStatus = await responseData.data.isMatch;
+
+      const matchStatus = responseData.data.isMatch;
 
       if (matchStatus) {
-        console.log("Match!");
+        console.log("match");
 
         const mintData = {
-          walletAddress: [cardsData.walletAddress, currentUserAddress],
-          names: [cardsData.name, currentUser.name],
+          walletAddresses: [cardData.walletAddress, currentUserAddress],
+          names: [cardData.name, currentUser.name],
         };
 
         await fetch("/api/mintMatchNft", {
@@ -88,7 +89,9 @@ export const TinderProvider = ({ children }) => {
           body: JSON.stringify(mintData),
         });
       }
-    } catch (err) {}
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const requestToCreateUserProfile = async (walletAddress, name) => {
