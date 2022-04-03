@@ -12,15 +12,9 @@ const getUserInfo = async (req, res) => {
 
     const sanityResponse = await client.fetch(query);
 
-    res.status(200).send({
-      message: "Success",
-      data: sanityResponse,
-    });
+    res.status(200).send({ message: "success", data: sanityResponse });
   } catch (error) {
-    res.status(500).send({
-      message: "Error occured",
-      data: error.message,
-    });
+    res.status(500).send({ message: "error", data: error.message });
   }
 };
 

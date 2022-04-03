@@ -4,21 +4,16 @@ const createUserOnSanity = async (req, res) => {
   try {
     const userDoc = {
       _type: "users",
-      _id: req.body.userWallerAddress,
+      _id: req.body.userWalletAddress,
       name: req.body.name,
-      walletAddress: req.body.userWallerAddress,
+      walletAddress: req.body.userWalletAddress,
     };
 
     await client.createIfNotExists(userDoc);
 
-    res.status(200).send({
-      message: "Success",
-    });
+    res.status(200).send({ message: "success" });
   } catch (error) {
-    res.status(500).send({
-      message: "Error occured",
-      data: error.message,
-    });
+    res.status(500).send({ message: "error", data: error.message });
   }
 };
 

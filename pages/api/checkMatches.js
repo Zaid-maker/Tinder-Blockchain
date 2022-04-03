@@ -3,9 +3,9 @@ import { client } from "../../lib/sanity";
 const getUserInfo = async (req, res) => {
   try {
     const query = `
-    *[_type == "users" && _id == "${req.body.likedUser}"]{
-        likes
-       }
+      *[_type == "users" && _id == "${req.body.likedUser}"]{
+         likes
+        }
     `;
 
     const sanityResponse = await client.fetch(query);
