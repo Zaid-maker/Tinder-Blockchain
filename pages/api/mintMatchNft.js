@@ -47,6 +47,7 @@ const mintMatchNft = async (req, res) => {
   );
 
   const txReceipt = await tx.wait();
+  console.log(txReceipt);
 
   res.status(200).send({
     message: "success",
