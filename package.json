@@ -12,7 +12,7 @@
     "@faker-js/faker": "^6.1.2",
     "@sanity/client": "^3.3.0",
     "dotenv": "^16.0.0",
-    "ethers": "^5.6.5",
+    "ethers": "^5.6.6",
     "magic-sdk": "^8.1.0",
     "moralis": "^1.5.11",
     "next": "12.1.1",
